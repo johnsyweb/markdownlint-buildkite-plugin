@@ -42,7 +42,7 @@ docker-compose run --rm tests
 ## Contributing
 
 1. Fork the repo
-2. Make the changes
-3. Run the tests
-4. Commit and push your changes
-5. Send a pull request
+1. Make the changes
+1. Run the tests
+1. Commit and push your changes
+1. Send a pull request
