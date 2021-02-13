@@ -1,3 +1,4 @@
+
 # Markdown Lint Buildkite Plugin
 
 Checks Markdown files and flags style issues.
@@ -7,13 +8,31 @@ Checks Markdown files and flags style issues.
 Have you ever updated your README or other important documentation, to discover
 later that it doesn't render the way you expected?
 
-Has your team codified its Markdown style guide for a project using [`.mdlrc`](https://github.com/markdownlint/markdownlint/blob/HEAD/docs/configuration.md)?
+Has your team codified its Markdown style guide for a project using
+[`.mdlrc`](https://github.com/markdownlint/markdownlint/blob/HEAD/docs/configuration.md)?
 
 Does [Buildkite](https://buildkite.com/) already perform checks on your repository?
 
 This plugin is for ***you***!
 
-## Usage
+## Development status [![Build status](https://badge.buildkite.com/09b4204f57717fd8183caad453e80f925c71599f56682fb645.svg)](https://buildkite.com/johnsyweb/markdown-lint-buildkite-plugin)
+
+This plugin was developed following Buildkite's [Writing
+Plugins](https://buildkite.com/docs/plugins/writing) guide. It will be useful on
+some projects at work but I wrote it in my own time and haven't had a chance to
+try it at work yet. Perhaps check the
+[pulse](https://github.com/johnsyweb/markdownlint-buildkite-plugin/pulse) to see
+if it's used.
+
+Meta: [This README is tested linted this plugin.](https://github.com/johnsyweb/markdownlint-buildkite-plugin/commit/909e7b097822d6a430c5b00f4c85346fc5f4b1af)
+
+To run the tests locally:
+
+```shell
+./scripts/test
+```
+
+## Getting started
 
 Add the following to your `pipeline.yml`:
 
@@ -42,18 +61,41 @@ Version of
 [markdownlint](https://hub.docker.com/r/markdownlint/markdownlint/tags) image to
 use.
 
-## Developing
+## Requirements
 
-To run the tests locally:
+- [Docker](https://www.docker.com/)
 
-```shell
-docker-compose run --rm tests
-```
+## Contact
 
-## Contributing
+- [GitHub project](https://github.com/johnsyweb/markdownlint-buildkite-plugin)
+- Bug reports and feature requests are welcome via [GitHub Issues](https://github.com/johnsyweb/markdownlint-buildkite-plugin/issues)
 
-1. Fork the repo
-1. Make the changes
-1. Run the tests
-1. Commit and push your changes
-1. Send a pull request
+## Maintainers
+
+- [Pete Johns](https://github.com/johnsyweb)
+
+## License [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/johnsyweb/markdownlint-buildkite-plugin/blob/HEAD/LICENSE.txt)
+
+`markdownlint-buildkite-plugin` uses MIT license. See
+[`LICENSE.txt`](https://github.com/johnsyweb/markdownlint-buildkite-plugin/blob/HEAD/LICENSE.txt)
+for details.
+
+## Code of Conduct
+
+We welcome contribution from everyone. Read more about it in
+[`CODE_OF_CONDUCT.md`](https://github.com/johnsyweb/markdownlint-buildkite-plugin/blob/HEAD/CODE_OF_CONDUCT.md)
+
+## Contributing [![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange.svg?style=flat-square)](https://github.com/johnsyweb/markdownlint-buildkite-plugin/issues)
+
+For bug fixes, documentation changes, and features:
+
+1. [Fork it](./fork)
+1. Create your feature branch (`git switch -c my-new-feature`)
+1. Commit your changes (`git commit -am 'Add some feature'`)
+1. Run the tests (`./scripts/test`)
+1. Push to the branch (`git push origin my-new-feature`)
+1. Create a new Pull Request
+
+For larger new features: Do everything as above, but first also make contact
+with the project maintainers to be sure your change fits with the project
+direction and you won't be wasting effort going in the wrong direction.
