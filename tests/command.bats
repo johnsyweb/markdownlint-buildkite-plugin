@@ -10,7 +10,6 @@ load '/usr/local/lib/bats/load.bash'
 if [[ ! -z "${DEBUG_STUBS}" ]]
 then
    export DOCKER_STUB_DEBUG=/dev/tty
-   export FIND_STUB_DEBUG=/dev/tty
 fi
 
 
@@ -29,29 +28,28 @@ fi
 }
 
 @test "Uses the latest Docker image by default" {
-  _FIND_ARGS='. -name "*.md" -print0'
+  export BUILDKITE_PLUGIN_MARKDOWN_LINT_PATTERN="README.md"
+
   _DOCKER_ARGS='run --rm -v /plugin:/mnt --workdir /mnt markdownlint/markdownlint:latest ./README.md'
 
-  stub find "${_FIND_ARGS} : echo './SOMETHING.md'"
   stub docker "${_DOCKER_ARGS} : echo 'Success'"
 
   run "$PWD/hooks/command"
 
   assert_success
-  assert_output --partial "Beautiful"
+  assert_output --partial "Success"
 }
 
 @test "Uses the BUILDKITE_PLUGIN_MARKDOWN_LINT_VERSION of Docker image if supplied" {
+  export BUILDKITE_PLUGIN_MARKDOWN_LINT_PATTERN="README.md"
   export BUILDKITE_PLUGIN_MARKDOWN_LINT_VERSION="3.14"
 
-  _FIND_ARGS='. -name "*.md" -print0'
   _DOCKER_ARGS='run --rm -v /plugin:/mnt --workdir /mnt markdownlint/markdownlint:3.14 ./README.md'
 
-  stub find "${_FIND_ARGS} : echo './SOMETHING.md'"
   stub docker "${_DOCKER_ARGS} : echo 'Success'"
 
   run "$PWD/hooks/command"
 
   assert_success
-  assert_output --partial "Beautiful"
+  assert_output --partial "Success"
 }
