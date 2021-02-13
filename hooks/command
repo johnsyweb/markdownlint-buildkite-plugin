@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euo pipefail
+
+PATTERN="${BUILDKITE_PLUGIN_MARKDOWN_LINT_PATTERN}"
+
+echo "--- :markdown: checking Markdown files (${PATTERN})..."
+
+errors=0
+while IFS= read -r -d '' mdfile
+do
+    mdl "${mdfile}" || errors=1
+done <   <(find . -name  "${PATTERN}" -print0)
+
+if [[ ${errors} -lt 1 ]]
+then
+    echo "Beautiful!"
+else
+    echo "Mistakes were made."
+fi
+
+exit ${errors}
