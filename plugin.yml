@@ -2,9 +2,11 @@
 name: Markdown Lint
 description: A Buildkite plugin to check Markdown files and flag style issues.
 author: https://msha.ke/johnsyweb/
-requirements: []
+requirements:
+  - docker
 configuration:
   properties:
     pattern:
       type: string
-  additionalProperties: false
+    version:
+      type: string

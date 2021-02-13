@@ -16,10 +16,20 @@ steps:
 
 ## Configuration
 
-### `pattern` (Required, string)
+### `pattern` (optional, string)
+
+Default: `*.md`
 
 The file name pattern, for example `*.md` or `*.markdown`. Supports any pattern
 supported by [find -name](http://man7.org/linux/man-pages/man1/find.1.html).
+
+### `version` (optional string)
+
+Default: `latest`
+
+Version of
+[markdownlint](https://hub.docker.com/r/markdownlint/markdownlint/tags) image to
+use.
 
 ## Developing
 
