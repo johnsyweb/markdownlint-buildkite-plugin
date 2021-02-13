@@ -1,11 +1,11 @@
-version: '2'
+version: '3.9'
 services:
   tests:
     image: buildkite/plugin-tester
     volumes:
-      - ".:/plugin:ro"
+      - ".:/plugin"
   lint:
     image: buildkite/plugin-linter
     command: ['--id', 'johnsyweb/markdownlint']
     volumes:
-      - ".:/plugin:ro"
+      - ".:/plugin"
